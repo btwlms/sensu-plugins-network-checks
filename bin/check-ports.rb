@@ -96,10 +96,10 @@ class CheckPort < Sensu::Plugin::Check::CLI
     end
     if okarray.size == ports.size
       puts "#{config[:scheme]} 0 #{@timestamp}"
-      exit
+      exit 0
       else
       puts "#{config[:scheme]} 1 #{@timestamp} "
-      exit
+      exit 1
        #  critical "port count or pattern #{config[:pattern]} does not match" unless config[:crit_message]
     end
   end
