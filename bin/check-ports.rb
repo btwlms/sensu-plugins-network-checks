@@ -69,7 +69,7 @@ class CheckPort < Sensu::Plugin::Check::CLI
     rescue Errno::ECONNREFUSED
       #critical "Connection refused by #{config[:host]}:#{port}"
      puts "#{config[:scheme]} 1 #{@timestamp} "
-    exit
+    exit 1
     rescue Timeout::Error
       critical "Connection or read timed out (#{config[:host]}:#{port})"
     rescue Errno::EHOSTUNREACH
@@ -99,7 +99,7 @@ class CheckPort < Sensu::Plugin::Check::CLI
       exit 0
       else
       puts "#{config[:scheme]} 1 #{@timestamp} "
-      exit 1
+      exit 2
        #  critical "port count or pattern #{config[:pattern]} does not match" unless config[:crit_message]
     end
   end
